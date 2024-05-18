@@ -8,3 +8,16 @@ Sat 18 May 2024 06:25:25 AM UTC:
  tests:  0|5
 total_score: 0/70
 88e1b22
+Sat 18 May 2024 06:43:15 AM UTC: 
+ sudoku.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:64:28: error: too many arguments to function ‘is_valid’
+   64 |                         if(is_valid(n, i, j, num))
+      |                            ^~~~~~~~
+sudoku.c:46:5: note: declared here
+   46 | int is_valid(Node* n){
+      |     ^~~~~~~~
+Compilation failed
+dca20f0
