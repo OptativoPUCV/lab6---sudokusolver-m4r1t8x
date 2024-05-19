@@ -39,3 +39,33 @@ Sat 18 May 2024 06:59:05 AM UTC:
  tests:  5|3
 total_score: 35/70
 e803d41
+Sun 19 May 2024 02:17:05 AM UTC: 
+ sudoku.c | 17 ++++-------------
+ 1 file changed, 4 insertions(+), 13 deletions(-)
+test.c: In function ‘get_adj_nodes’:
+test.c:245:5: error: ‘main’ is normally a non-static function [-Werror=main]
+  245 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:262:1: error: expected declaration or statement at end of input
+  262 | }
+      | ^
+test.c:262:1: error: expected declaration or statement at end of input
+test.c:262:1: error: expected declaration or statement at end of input
+In file included from test.c:5:
+sudoku.c:85:19: error: unused variable ‘aux2’ [-Werror=unused-variable]
+   85 |    int aux1 = -1, aux2 = -1;
+      |                   ^~~~
+sudoku.c:85:8: error: unused variable ‘aux1’ [-Werror=unused-variable]
+   85 |    int aux1 = -1, aux2 = -1;
+      |        ^~~~
+test.c:263: error: control reaches end of non-void function [-Werror=return-type]
+At top level:
+test.c:245:5: error: ‘main’ defined but not used [-Werror=unused-function]
+  245 | int main( int argc, char *argv[] ) {
+      |     ^~~~
+test.c:7:8: error: ‘_strdup’ defined but not used [-Werror=unused-function]
+    7 | char * _strdup(const char * str) {
+      |        ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+aa7abbe

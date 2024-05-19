@@ -90,21 +90,12 @@ List* get_adj_nodes(Node* n)
             {
                if (n->sudo[i][j] == 0)
                {
-                  aux1 = i;
-                  aux2 = j;
-                  break;
-               }
-            }
-         if (aux1 != -1) break;
-      }
-   if(aux1 == -1 || aux2 == -1) return list;
-   
-   for(int num = 1; num <= 9; num++)
-      {
-         Node* adj = copy(n);
-         adj->sudo[aux1][aux2] = num;
-         pushBack(list, adj);
-      }
+                  for(int k = 0; k <= 9; k++)
+                     {
+                        Node *valor = copy(n);
+                        valor->sudo[i][j] = k;
+                        pushBack(list, valor);
+                     }
    return list;
 }
 
