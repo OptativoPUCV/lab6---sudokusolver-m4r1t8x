@@ -96,6 +96,9 @@ List* get_adj_nodes(Node* n)
                         valor->sudo[i][j] = k;
                         pushBack(list, valor);
                      }
+               }
+            }
+      }
    return list;
 }
 
