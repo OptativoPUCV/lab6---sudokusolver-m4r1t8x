@@ -46,30 +46,30 @@ void print_node(Node* n){
 int is_valid(Node* n)
 {
    for (int i = 0; i < 9; i++) {
-        int row_mask = 0;
-        int col_mask = 0;
+        int filas = 0;
+        int columnas = 0;
         for (int j = 0; j < 9; j++) {
             // Verificar filas
-            if (n->sudo[i][j] != 0 && (row_mask & (1 << n->sudo[i][j])) != 0)
+            if (n->sudo[i][j] != 0 && (filas & (1 << n->sudo[i][j])) != 0)
                 return 0;
-            row_mask |= (1 << n->sudo[i][j]);
+            filas |= (1 << n->sudo[i][j]);
 
             // Verificar columnas
-            if (n->sudo[j][i] != 0 && (col_mask & (1 << n->sudo[j][i])) != 0)
+            if (n->sudo[j][i] != 0 && (columnas & (1 << n->sudo[j][i])) != 0)
                 return 0;
-            col_mask |= (1 << n->sudo[j][i]);
+            columnas |= (1 << n->sudo[j][i]);
         }
     }
 
     // Verificar submatrices 3x3
     for (int k = 0; k < 9; k += 3) {
         for (int l = 0; l < 9; l += 3) {
-            int sub_mask = 0;
+            int subMatrices = 0;
             for (int i = k; i < k + 3; i++) {
                 for (int j = l; j < l + 3; j++) {
-                    if (n->sudo[i][j] != 0 && (sub_mask & (1 << n->sudo[i][j])) != 0)
+                    if (n->sudo[i][j] != 0 && (subMatrices & (1 << n->sudo[i][j])) != 0)
                         return 0;
-                    sub_mask |= (1 << n->sudo[i][j]);
+                    subMatrices |= (1 << n->sudo[i][j]);
                 }
             }
         }
@@ -103,7 +103,14 @@ List* get_adj_nodes(Node* n)
       {
          Node* adj = copy(n);
          adj->sudo[aux1][aux2] = num;
-         pushBack(list, adj);
+         if(is_valid(adj))
+         {
+            pushBack(list, adj);
+         }
+         else
+         {
+            free(adj);
+         }
       }
    return list;
 }
